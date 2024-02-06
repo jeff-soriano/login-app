@@ -9,8 +9,10 @@ const LoginForm = () => {
   const [passwordError, setPasswordError] = useState('')
 
   const validateEmail = (email: string) => {
+    // Regular expression for validation comes from here:
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#validation
     const re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
     return re.test(email.toLowerCase())
   }
 
