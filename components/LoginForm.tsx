@@ -29,7 +29,7 @@ const LoginForm = () => {
   }
 
   const validatePassword = (password: string) => {
-    return password.length === 0
+    return password.length > 0
   }
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
