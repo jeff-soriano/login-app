@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import { debounce } from 'lodash'
 
 // Message that shows just before error message from login
 const LOGIN_FAILED_PRE_MESSAGE = 'Login Failed'
@@ -21,16 +22,23 @@ const LoginForm = () => {
     return re.test(email.toLowerCase())
   }
 
+  // Debounced email validation
+  const debouncedEmailValidation = useRef(
+    debounce((email: string) => {
+      if (!validateEmail(email)) {
+        console.error('email validation failed. email: ', email)
+        setEmailError('Please enter a valid email address')
+      } else {
+        setEmailError('')
+      }
+    }, 2000)
+  ) // 2sec delay
+
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const emailVal = e.target.value
     setEmail(emailVal)
-
-    // If email is not valid, set an error message
-    if (!validateEmail(emailVal)) {
-      setEmailError('Please enter a valid email address')
-    } else {
-      setEmailError('')
-    }
+    setEmailError('')
+    debouncedEmailValidation.current(emailVal)
   }
 
   const validatePassword = (password: string) => {
