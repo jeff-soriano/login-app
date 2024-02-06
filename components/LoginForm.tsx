@@ -2,11 +2,15 @@
 
 import React, { useState } from 'react'
 
+// Message that shows just before error message from login
+const LOGIN_FAILED_PRE_MESSAGE = 'Login Failed'
+
 const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+  const [loginMessage, setLoginMessage] = useState('')
 
   const validateEmail = (email: string) => {
     // Regular expression for validation comes from here:
@@ -47,20 +51,19 @@ const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // Reset errors
+    // Reset messages
     setEmailError('')
     setPasswordError('')
+    setLoginMessage('')
 
     // Check for empty fields and set errors accordingly
-    if (!email) {
-      setEmailError('Email cannot be empty')
-    }
-    if (!password) {
-      setPasswordError('Password cannot be empty')
-    }
-
-    // Proceed only if email and password are filled in
     if (!email || !password) {
+      if (!email) {
+        setEmailError('Email cannot be empty')
+      }
+      if (!password) {
+        setPasswordError('Password cannot be empty')
+      }
       return // Stop the function if there are empty inputs
     }
 
@@ -80,9 +83,16 @@ const LoginForm = () => {
           body: JSON.stringify({ email, password }),
         })
         const data = await response.json()
-        console.log(data)
-      } catch (error) {
+        // Check to see if response failed
+        if (response.ok) {
+          setLoginMessage('Login successful!')
+          console.log(data)
+        } else {
+          throw new Error(data.error || 'An error occurred. Please try again.')
+        }
+      } catch (error: any) {
         console.error('Login failed:', error)
+        setLoginMessage(`${LOGIN_FAILED_PRE_MESSAGE}: ${error.message}`)
       }
     }
   }
@@ -135,6 +145,17 @@ const LoginForm = () => {
           Log in
         </button>
       </div>
+      {loginMessage && (
+        <div
+          className={`text-sm ${
+            loginMessage.startsWith(LOGIN_FAILED_PRE_MESSAGE)
+              ? 'text-red-600'
+              : 'text-green-600'
+          }`}
+        >
+          <p>{loginMessage}</p>
+        </div>
+      )}
     </form>
   )
 }
