@@ -44,6 +44,30 @@ const LoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    // Reset errors
+    setEmailError('')
+    setPasswordError('')
+
+    // Check for empty fields and set errors accordingly
+    if (!email) {
+      setEmailError('Email cannot be empty')
+    }
+    if (!password) {
+      setPasswordError('Password cannot be empty')
+    }
+
+    // Proceed only if email and password are filled in
+    if (!email || !password) {
+      return // Stop the function if there are empty inputs
+    }
+
+    // Validate email format again in case the user bypassed the onChange validation
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address')
+      return // Stop the function if the email is invalid
+    }
+
     if (!emailError && !passwordError && email && password) {
       try {
         const response = await fetch('https://reqres.in/api/login', {
