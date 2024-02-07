@@ -80,6 +80,12 @@ const LoginForm = () => {
       return // Stop the function if there are empty inputs
     }
 
+    // Validate email format again in case the user bypassed the onChange validation
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address')
+      return
+    }
+
     // Start loading
     setIsLoading(true)
 
