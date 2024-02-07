@@ -23,6 +23,8 @@ const LoginForm = () => {
   }
 
   // Debounced email validation
+  // The reason for why we need useRef is explained here:
+  // https://rajeshnaroth.medium.com/using-throttle-and-debounce-in-a-react-function-component-5489fc3461b3
   const debouncedEmailValidation = useRef(
     debounce((email: string) => {
       if (!validateEmail(email)) {
@@ -37,6 +39,8 @@ const LoginForm = () => {
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const emailVal = e.target.value
     setEmail(emailVal)
+
+    // Clear error messages when the user starts typing again
     setEmailError('')
     debouncedEmailValidation.current(emailVal)
   }
