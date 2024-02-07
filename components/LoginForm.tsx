@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react'
 import { debounce } from 'lodash'
+import Image from 'next/image'
 
 // Message that shows just before error message from login
 const LOGIN_FAILED_PRE_MESSAGE = 'Login Failed'
@@ -117,6 +118,17 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <Image
+        src="https://www.prokeep.com/hs-fs/hubfs/Logos/Prokeep%20Logo-2.png?width=798&height=166&name=Prokeep%20Logo-2.png"
+        alt="Prokeep Logo"
+        sizes="100vw"
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        width={500}
+        height={300}
+      />
       <div>
         <label
           htmlFor="email"
