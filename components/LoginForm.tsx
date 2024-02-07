@@ -146,7 +146,9 @@ const LoginForm = () => {
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
           <div className="tooltip-container">
-            <span className="text-sm">?</span>
+            <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-gray-200 text-gray-800 cursor-pointer">
+              ?
+            </span>{' '}
             <span className="tooltip-text">
               Must include &apos;@&apos; and domain extension
             </span>
@@ -173,7 +175,9 @@ const LoginForm = () => {
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           />
           <div className="tooltip-container">
-            <span className="text-sm">?</span>
+            <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-gray-200 text-gray-800 cursor-pointer">
+              ?
+            </span>{' '}
             <span className="tooltip-text">
               Must be at least one character long.
             </span>
