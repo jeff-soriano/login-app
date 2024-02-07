@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
-import { debounce } from 'lodash'
+import debounce from 'lodash.debounce'
 import Image from 'next/image'
 
 // Message that shows just before error message from login
