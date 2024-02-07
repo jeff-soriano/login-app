@@ -136,14 +136,22 @@ const LoginForm = () => {
         >
           Email
         </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-        />
+        <div className="flex items-center gap-2">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleEmailChange}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+          <div className="tooltip-container">
+            <span className="text-sm">?</span>
+            <span className="tooltip-text">
+              Must include &apos;@&apos; and domain extension
+            </span>
+          </div>
+        </div>
         {emailError && (
           <p className="mt-2 text-sm text-red-600">{emailError}</p>
         )}
@@ -155,14 +163,22 @@ const LoginForm = () => {
         >
           Password
         </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-        />
+        <div className="flex items-center gap-2">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          />
+          <div className="tooltip-container">
+            <span className="text-sm">?</span>
+            <span className="tooltip-text">
+              Must be at least one character long.
+            </span>
+          </div>
+        </div>
         {passwordError && (
           <p className="mt-2 text-sm text-red-600">{passwordError}</p>
         )}
