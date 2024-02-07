@@ -29,7 +29,6 @@ const LoginForm = () => {
   const debouncedEmailValidation = useRef(
     debounce((email: string) => {
       if (!validateEmail(email)) {
-        console.error('email validation failed. email: ', email)
         setEmailError('Please enter a valid email address')
       } else {
         setEmailError('')
