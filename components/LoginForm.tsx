@@ -16,8 +16,6 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const validateEmail = (email: string) => {
-    console.log('in validateEmail')
-
     // Regular expression for validation comes from here:
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#validation
     const re =
@@ -30,7 +28,6 @@ const LoginForm = () => {
   // https://rajeshnaroth.medium.com/using-throttle-and-debounce-in-a-react-function-component-5489fc3461b3
   const debouncedEmailValidation = useRef(
     debounce((email: string) => {
-      console.log('in debounce')
       if (!validateEmail(email)) {
         console.error('email validation failed. email: ', email)
         setEmailError('Please enter a valid email address')
@@ -68,14 +65,12 @@ const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    console.log('top of handleSubmit')
     // Reset messages
     setEmailError('')
     setPasswordError('')
     setLoginMessage('')
 
     // Check for empty fields and set errors accordingly
-    console.log('Check for empty fields and set errors accordingly')
     if (!email || !password) {
       if (!email) {
         setEmailError('Email cannot be empty')
@@ -87,9 +82,6 @@ const LoginForm = () => {
     }
 
     // Validate email format again in case the user bypassed the onChange validation
-    console.log(
-      'Validate email format again in case the user bypassed the onChange validation'
-    )
     if (!validateEmail(email)) {
       setEmailError('Please enter a valid email address')
       return
