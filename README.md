@@ -12,6 +12,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+# Per the [https://reqres.in/](https://reqres.in/) docs, use the following login credentials to get a successful login result:
+
+email : eve.holt@reqres.in
+password: cityslicka
+
 To test the app, use:
 
 ```bash
