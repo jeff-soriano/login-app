@@ -20,9 +20,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 #### Per the [https://reqres.in/](https://reqres.in/) docs, use the following login credentials to get a successful login result:
 
-email : eve.holt@reqres.in
+email : `eve.holt@reqres.in`
 
-password: cityslicka
+password: `cityslicka`
 
 #### This app uses `onChange` for validation, but the email validation is debounced. The error validation message won't appear until 2 sec after typing
 
