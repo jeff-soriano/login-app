@@ -4,6 +4,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 I used Node v18.17.0 for testing this app. I recommend using the same version to avoid any potential issues.
 
+Before running the app, install the packages
+
+```bash
+npm install
+```
+
 To run the app, use:
 
 ```bash
@@ -12,10 +18,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Per the [https://reqres.in/](https://reqres.in/) docs, use the following login credentials to get a successful login result:
+#### Per the [https://reqres.in/](https://reqres.in/) docs, use the following login credentials to get a successful login result:
 
 email : eve.holt@reqres.in
+
 password: cityslicka
+
+#### This app uses `onChange` for validation, but the email validation is debounced. The error validation message won't appear until 2 sec after typing
 
 To test the app, use:
 
